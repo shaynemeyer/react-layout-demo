@@ -1,0 +1,22 @@
+{
+  "name": "react-skeleton",
+  "version": "1.0.0",
+  "description": "A skeleton for starting reactjs projects",
+  "main": "app.js",
+  "scripts": {
+    "start": "watchify src/main.jsx -v -t [babelify --presets [ react ] ] -o public/js/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reactjs"
+  ],
+  "author": "Shayne Meyer <shayne.meyer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "watchify": "^3.6.1"
+  }
+}

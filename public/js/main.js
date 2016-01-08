@@ -19020,54 +19020,303 @@ process.umask = function() { return 0; };
 
 },{}],159:[function(require,module,exports){
 var React = require('react');
-var ListItem = require('./ListItem.jsx');
 
-var ingredients = [{ "id": 1, "text": "ham" }, { "id": 2, "text": "cheese" }, { "id": 3, "text": "pizza" }];
-
-var List = React.createClass({
-  displayName: 'List',
+var Metrics = React.createClass({
+  displayName: "Metrics",
 
   render: function () {
-    var listItems = ingredients.map(function (item) {
-      return React.createElement(ListItem, { key: item.id, ingredient: item.text });
-    });
+    // onChange is called every keystroke so we can store the most recent data entered
+    // value is what the user sees in the input box - we point this to newItemText so it updates
+
+    var divStyle = {
+      marginTop: 10,
+      color: "white"
+    };
+
+    var panelStyle = {
+      height: 120
+    };
+    var bodyTextStyle = {
+      fontSize: "1.5em"
+    };
+
+    var headerStyle = {
+      height: 60
+    };
+
+    var titleStyle = {
+      fontSize: ".80em"
+    };
+
+    if (this.props.headerColor) {
+      headerStyle.background = this.props.headerColor;
+    }
 
     return React.createElement(
-      'ul',
-      null,
-      listItems
-    );
-  }
-});
-
-module.exports = List;
-
-},{"./ListItem.jsx":160,"react":157}],160:[function(require,module,exports){
-var React = require('react');
-var ListItem = React.createClass({
-  displayName: 'ListItem',
-
-  render: function () {
-
-    return React.createElement(
-      'li',
-      null,
+      "div",
+      { style: divStyle, className: "col-sm-12" },
       React.createElement(
-        'h4',
-        null,
-        this.props.ingredient
+        "div",
+        { style: panelStyle, className: "panel" },
+        React.createElement(
+          "div",
+          { style: headerStyle, className: "panel-heading" },
+          React.createElement(
+            "div",
+            { style: titleStyle },
+            this.props.title
+          ),
+          React.createElement(
+            "div",
+            { style: bodyTextStyle },
+            this.props.bodyText
+          )
+        ),
+        React.createElement("div", { className: "row panel-body" })
       )
     );
   }
 });
 
-module.exports = ListItem;
+module.exports = Metrics;
+
+},{"react":157}],160:[function(require,module,exports){
+var React = require('react');
+
+var Plainbox = React.createClass({
+  displayName: "Plainbox",
+
+  render: function () {
+    // onChange is called every keystroke so we can store the most recent data entered
+    // value is what the user sees in the input box - we point this to newItemText so it updates
+
+    var divStyle = {
+      marginTop: 10
+    };
+
+    var bodyTextStyle = {
+      marginTop: -25,
+      marginLeft: 15,
+      color: "#d3d3d3"
+    };
+
+    var panelStyle = {
+      borderColor: "#e1e2e3"
+    };
+
+    return React.createElement(
+      "div",
+      { style: divStyle, className: "col-sm-4" },
+      React.createElement(
+        "div",
+        { style: panelStyle, className: "panel" },
+        React.createElement(
+          "div",
+          { className: "panel-heading" },
+          React.createElement(
+            "h3",
+            null,
+            this.props.title
+          )
+        ),
+        React.createElement(
+          "div",
+          { className: "row panel-body" },
+          React.createElement(
+            "p",
+            { style: bodyTextStyle },
+            this.props.bodyText
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = Plainbox;
 
 },{"react":157}],161:[function(require,module,exports){
 var React = require('react');
+
+var TripleBox = React.createClass({
+  displayName: "TripleBox",
+
+  render: function () {
+    // onChange is called every keystroke so we can store the most recent data entered
+    // value is what the user sees in the input box - we point this to newItemText so it updates
+
+    var divStyle = {
+      marginTop: 10,
+      color: "white"
+    };
+
+    var panelStyle = {
+      height: 200,
+      background: "#484d4d",
+      border: 0,
+      cornerRadius: 7
+    };
+    var bodyTextStyle = {
+      fontSize: "1.5em"
+    };
+
+    var headerStyle = {
+      height: 130
+    };
+
+    var panelBodyStyle = {};
+
+    var titleStyle = {
+      fontSize: ".80em"
+    };
+
+    var largeTextStyle = {
+      fontSize: "1.5em"
+    };
+
+    var captionStyle = {
+      fontSize: ".80em",
+      color: "#b1b2b2"
+    };
+
+    if (this.props.titleBGColor) {
+      headerStyle.background = this.props.titleBGColor;
+    }
+
+    return React.createElement(
+      "div",
+      { style: divStyle, className: "col-sm-12" },
+      React.createElement(
+        "div",
+        { style: panelStyle, className: "panel" },
+        React.createElement("div", { style: headerStyle, className: "panel-heading" }),
+        React.createElement(
+          "div",
+          { style: panelBodyStyle, className: "row panel-body" },
+          React.createElement(
+            "div",
+            { className: "col-xs-4 text-center" },
+            React.createElement(
+              "div",
+              { style: largeTextStyle },
+              this.props.shotViews
+            ),
+            React.createElement(
+              "div",
+              { style: captionStyle },
+              "Shot Views"
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "col-xs-4 text-center" },
+            React.createElement(
+              "div",
+              { style: largeTextStyle },
+              this.props.likes
+            ),
+            React.createElement(
+              "div",
+              { style: captionStyle },
+              "Likes"
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "col-xs-4 text-center" },
+            React.createElement(
+              "div",
+              { style: largeTextStyle },
+              this.props.comments
+            ),
+            React.createElement(
+              "div",
+              { style: captionStyle },
+              "Comments"
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = TripleBox;
+
+},{"react":157}],162:[function(require,module,exports){
+var React = require('react');
+
+var Weather = React.createClass({
+  displayName: "Weather",
+
+  render: function () {
+    // onChange is called every keystroke so we can store the most recent data entered
+    // value is what the user sees in the input box - we point this to newItemText so it updates
+
+    var divStyle = {
+      marginTop: 10,
+      color: "white"
+    };
+
+    var bodyTextStyle = {
+      marginTop: -30
+    };
+
+    var panelStyle = {};
+
+    if (this.props.boxColor) {
+      panelStyle.background = this.props.boxColor;
+    }
+
+    return React.createElement(
+      "div",
+      { style: divStyle, className: "col-sm-12" },
+      React.createElement(
+        "div",
+        { style: panelStyle, className: "panel" },
+        React.createElement(
+          "div",
+          { className: "panel-heading text-center" },
+          React.createElement(
+            "h3",
+            null,
+            this.props.tempurature,
+            "°"
+          )
+        ),
+        React.createElement(
+          "div",
+          { className: "row panel-body text-center" },
+          React.createElement(
+            "p",
+            { style: bodyTextStyle },
+            this.props.city
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = Weather;
+
+},{"react":157}],163:[function(require,module,exports){
+var React = require('react');
 var ReactDOM = require('react-dom');
-var List = require('./components/List.jsx');
+var Plainbox = require('./components/Plainbox.jsx');
+var Weather = require('./components/Weather.jsx');
+var Metrics = require('./components/Metrics.jsx');
+var TripleBox = require('./components/TripleBox.jsx');
 
-ReactDOM.render(React.createElement(List, null), document.getElementById('ingredients'));
+ReactDOM.render(React.createElement(Plainbox, { title: '20', bodyText: 'New followers added this month' }), document.getElementById('pb1'));
+ReactDOM.render(React.createElement(Plainbox, { title: '$1250', bodyText: 'Average Monthly Income' }), document.getElementById('pb2'));
+ReactDOM.render(React.createElement(Plainbox, { title: '$13865', bodyText: 'Yearly Income Goal' }), document.getElementById('pb3'));
+ReactDOM.render(React.createElement(Weather, { tempurature: '18', city: 'Paris', boxColor: '#ff8a00' }), document.getElementById('weather-paris'));
+ReactDOM.render(React.createElement(Metrics, { title: 'New visitors', bodyText: '1.5K', headerColor: '#0096d0' }), document.getElementById('metrics-visitors'));
+ReactDOM.render(React.createElement(Metrics, { title: 'Bounce Rate', bodyText: '50%', headerColor: '#b28ad6' }), document.getElementById('metrics-bounce-rate'));
+ReactDOM.render(React.createElement(Metrics, { title: 'Searches', bodyText: '28%', headerColor: '#ff4826' }), document.getElementById('metrics-searches'));
+ReactDOM.render(React.createElement(Metrics, { title: 'Traffic', bodyText: '140.5 kb', headerColor: '#63c254' }), document.getElementById('metrics-traffic'));
+ReactDOM.render(React.createElement(TripleBox, { shotViews: '15080', likes: '12000', comments: '5100', titleBGColor: '#0096d0' }), document.getElementById('tb1'));
+ReactDOM.render(React.createElement(TripleBox, { shotViews: '15080', likes: '12000', comments: '5100', titleBGColor: '#cd59ae' }), document.getElementById('tb2'));
 
-},{"./components/List.jsx":159,"react":157,"react-dom":1}]},{},[161]);
+},{"./components/Metrics.jsx":159,"./components/Plainbox.jsx":160,"./components/TripleBox.jsx":161,"./components/Weather.jsx":162,"react":157,"react-dom":1}]},{},[163]);

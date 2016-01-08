@@ -5,13 +5,30 @@
     <title>React Layout Demo</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/site.css">
   </head>
   <body>
     <div class="container">
       <div class="row">
-        <div id="ingredients"></div>
-        <div id="todos"></div>
-        <div id="christmas"></div>
+        <div class="col-sm-9">
+          <div class="row">
+            <div id="pb1"></div>
+            <div id="pb2"></div>
+            <div id="pb3"></div>
+          </div>
+          <div class="row">
+            <div id="tb1"></div>
+            <div id="tb2"></div>
+          </div>
+
+        </div>
+        <div class="col-sm-3">
+          <div id="weather-paris" ></div>
+          <div id="metrics-visitors"></div>
+          <div id="metrics-bounce-rate"></div>
+          <div id="metrics-searches"></div>
+          <div id="metrics-traffic"></div>
+        </div>
       </div>
     </div>
 
